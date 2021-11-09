@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Ground Overlays</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map1 {
+            height: 50%;
+            margin-bottom: 50px;
+        }
+        #map2 {
+            height: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map1"></div>
+    <div id="map2"></div>
+    <script>
+
+        var historicalOverlay1;
+        var historicalOverlay2;
+        function initMap() {
+            var map1 = new google.maps.Map(document.getElementById('map1'), {
+                zoom: 6,
+                center: {
+                    lat: 9.8,
+                    lng: -85.5073
+                }
+            });
+
+            var map2 = new google.maps.Map(document.getElementById('map2'), {
+                zoom: 6,
+                center: {
+                    lat: 9.8,
+                    lng: -85.5073
+                }
+            });
+
+            var imageBounds = {
+                north: 11.2538,
+                south: 8.0592,
+                east: -82.5073,
+                west: -85.9460
+            };
+
+            historicalOverlay1 = new google.maps.GroundOverlay(
+                'heatmap_robos.png',
+                imageBounds);
+            historicalOverlay1.setMap(map1);
+
+            historicalOverlay2 = new google.maps.GroundOverlay(
+                'heatmap_asaltos.png',
+                imageBounds);
+            historicalOverlay2.setMap(map2);
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1kEUFQC7XtD1z-GnyG0-Jwn9u_qebnLg&callback=initMap">>
+    </script>
+</body>
+
+</html>
